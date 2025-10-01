@@ -13,7 +13,7 @@ async function createGuestUser() {
     const { data: existingUser, error: checkError } = await supabase
       .from('profiles')
       .select('*')
-      .eq('email', 'guest@youtcourt.com')
+      .eq('email', 'guest@appgestione.com')
       .single();
 
     if (checkError && checkError.code !== 'PGRST116') {
@@ -28,7 +28,7 @@ async function createGuestUser() {
       const { error: deleteProfileError } = await supabase
         .from('profiles')
         .delete()
-        .eq('email', 'guest@youtcourt.com');
+        .eq('email', 'guest@appgestione.com');
 
       if (deleteProfileError) {
         console.error('Errore durante l\'eliminazione del profilo:', deleteProfileError);
@@ -45,7 +45,7 @@ async function createGuestUser() {
 
     // 1. Crea l'utente guest
     const { data: userData, error: userError } = await supabase.auth.signUp({
-      email: 'guest@youtcourt.com',
+      email: 'guest@appgestione.com',
       password: 'guest123',
       options: {
         data: {
@@ -69,7 +69,7 @@ async function createGuestUser() {
     const { data: existingSocieta, error: searchError } = await supabase
       .from('societa_sportive')
       .select()
-      .eq('nome_completo', 'YoutCourt Guest Society')
+      .eq('nome_completo', 'App Gestione Guest Society')
       .single();
 
     if (searchError && searchError.code !== 'PGRST116') {
@@ -85,9 +85,9 @@ async function createGuestUser() {
         .from('societa_sportive')
         .insert([
           {
-            nome_completo: 'YoutCourt Guest Society',
-            nome_breve: 'Guest',
-            token: 'GUEST123'
+            nome_completo: 'App Gestione Guest Society',
+            nome_breve: 'AppGuest',
+            token: 'APPGUEST123'
           }
         ])
         .select()
@@ -106,7 +106,7 @@ async function createGuestUser() {
       .insert([
         {
           id: userData.user.id,
-          email: 'guest@youtcourt.com',
+          email: 'guest@appgestione.com',
           username: 'guest',
           full_name: 'Utente Guest',
           role: 'guest', // Cambiato da 'user' a 'guest' per coerenza
@@ -124,7 +124,7 @@ async function createGuestUser() {
     const { data: finalCheck, error: finalCheckError } = await supabase
       .from('profiles')
       .select('*, societa_sportive(*)')
-      .eq('email', 'guest@youtcourt.com')
+      .eq('email', 'guest@appgestione.com')
       .single();
 
     if (finalCheckError) {

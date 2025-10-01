@@ -114,7 +114,7 @@ export default function Login() {
                   await supabase.auth.signOut(); // Chiudiamo eventuali sessioni esistenti
                   
                   const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
-                    email: 'guest@appgestione.com',
+                    email: 'guest@youtcourt.com',
                     password: 'guest123'
                   });
 
@@ -126,7 +126,7 @@ export default function Login() {
                     const { data: userCheck } = await supabase
                       .from('profiles')
                       .select('*')
-                      .eq('email', 'guest@appgestione.com')
+                      .eq('email', 'guest@youtcourt.com')
                       .single();
                     
                     console.log('Profilo guest trovato:', userCheck);
