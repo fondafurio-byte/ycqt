@@ -15,21 +15,31 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showTestButton, setShowTestButton] = useState(false);
+  const [keySequence, setKeySequence] = useState<string[]>([]);
   const navigate = useNavigate();
 
-  // Listener per la scorciatoia da tastiera
+  // Listener per la scorciatoia da tastiera con sequenza
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      // Scorciatoia: Ctrl+Alt+D (o Cmd+Alt+D su Mac) per Debug/Test
-      if ((event.ctrlKey || event.metaKey) && event.altKey && event.key === 'd') {
+      // Scorciatoia: Cmd+K, poi K (sequenza)
+      if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+        event.preventDefault();
+        setKeySequence(['cmd+k']);
+        // Reset dopo 2 secondi se non completa la sequenza
+        setTimeout(() => setKeySequence([]), 2000);
+      } else if (keySequence.includes('cmd+k') && event.key === 'k') {
         event.preventDefault();
         setShowTestButton(prev => !prev);
+        setKeySequence([]);
+      } else if (event.key !== 'k') {
+        // Reset se premi un altro tasto
+        setKeySequence([]);
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [keySequence]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -68,7 +78,7 @@ export default function Login() {
             App Gestione
             {showTestButton && (
               <Typography variant="caption" sx={{ display: 'block', color: 'orange', mt: 1 }}>
-                Modalità Test Attiva (Ctrl/Cmd+Alt+D)
+                Modalità Test Attiva (Cmd+K, poi K)
               </Typography>
             )}
           </Typography>
