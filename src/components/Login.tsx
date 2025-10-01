@@ -20,8 +20,8 @@ export default function Login() {
   // Listener per la scorciatoia da tastiera
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      // Scorciatoia: Ctrl+Shift+T (o Cmd+Shift+T su Mac)
-      if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'T') {
+      // Scorciatoia: Ctrl+Alt+D (o Cmd+Alt+D su Mac) per Debug/Test
+      if ((event.ctrlKey || event.metaKey) && event.altKey && event.key === 'd') {
         event.preventDefault();
         setShowTestButton(prev => !prev);
       }
@@ -68,7 +68,7 @@ export default function Login() {
             App Gestione
             {showTestButton && (
               <Typography variant="caption" sx={{ display: 'block', color: 'orange', mt: 1 }}>
-                Modalità Test Attiva (Ctrl/Cmd+Shift+T)
+                Modalità Test Attiva (Ctrl/Cmd+Alt+D)
               </Typography>
             )}
           </Typography>
