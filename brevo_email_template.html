@@ -1,0 +1,45 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conferma Account - YouthCourt IQ</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h2 style="color: #2c3e50;">Conferma il tuo account</h2>
+        
+        <p>Ciao <strong>{{ contact.FNAME }}</strong>,</p>
+        
+        <p>Grazie per esserti registrato!<p> 
+        <p>Clicca sul pulsante per confermare il tuo account:</p>
+        
+        <p style="text-align: center; margin: 30px 0;">
+            <a href="{{ params.CONFIRMATION_URL }}" 
+               style="background-color: #3498db; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">
+                Conferma Account
+            </a>
+        </p>
+        
+        <div style="background-color: #f8f9fa; padding: 15px; margin: 20px 0; border-radius: 5px; border-left: 4px solid #3498db;">
+            <h3 style="margin-top: 0; color: #2c3e50;">Dettagli Società</h3>
+            <p><strong>Nome Società:</strong> {{ params.COMPANY_NAME }}</p>
+            <p><strong>Token Società:</strong> 
+                <code style="background-color: #e9ecef; padding: 2px 8px; border-radius: 3px; font-family: monospace;">
+                    {{ params.COMPANY_TOKEN }}
+                </code>
+            </p>
+            <p><strong>Ruolo:</strong> {{ params.ROLE }}</p>
+        </div>
+        
+        <p>Se non hai richiesto questa registrazione, puoi ignorare questa email.</p>
+        
+        <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
+        <p style="font-size: 12px; color: #666; text-align: center;">
+            Questo link scadrà in 24 ore per motivi di sicurezza.
+        </p>
+    </div>
+</body>
+</html>
