@@ -7,13 +7,11 @@ import {
 } from '@mui/material';
 import { 
   CheckCircle as CheckCircleIcon,
-  PhoneAndroid as PhoneAndroidIcon,
   Computer as ComputerIcon,
   Apple as AppleIcon,
   Android as AndroidIcon
 } from '@mui/icons-material';
 import logo from '../assets/icon.png';
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 export default function EmailConfirmed() {
@@ -239,25 +237,6 @@ export default function EmailConfirmed() {
               onClick={handleOpenApp}
             >
               {getButtonText()}
-            </Button>
-
-            <Button
-              component={Link}
-              to="/register"
-              variant="outlined"
-              startIcon={deviceInfo.isMobile ? <PhoneAndroidIcon /> : <ComputerIcon />}
-              sx={{ 
-                height: 48,
-                borderColor: 'white',
-                color: 'white',
-                '&:hover': {
-                  borderColor: 'white',
-                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                },
-                minWidth: 180
-              }}
-            >
-              Torna alla Registrazione
             </Button>
           </Box>
 
