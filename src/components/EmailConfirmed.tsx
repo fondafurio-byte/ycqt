@@ -147,9 +147,6 @@ export default function EmailConfirmed() {
         elevation={3} 
         sx={{ 
           p: 4,
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(10px)',
-          color: 'white',
           textAlign: 'center'
         }}
       >
@@ -181,8 +178,7 @@ export default function EmailConfirmed() {
             component="h1" 
             variant="h4" 
             sx={{ 
-              fontWeight: 'bold',
-              color: 'white'
+              fontWeight: 'bold'
             }}
           >
             Email Verificata con Successo!
@@ -190,8 +186,8 @@ export default function EmailConfirmed() {
 
           <Typography 
             variant="h6" 
+            color="text.secondary"
             sx={{ 
-              color: 'rgba(255, 255, 255, 0.8)',
               maxWidth: 400,
               textAlign: 'center',
               mb: 1
@@ -211,8 +207,8 @@ export default function EmailConfirmed() {
 
           <Typography 
             variant="body2" 
+            color="text.secondary"
             sx={{ 
-              color: 'rgba(255, 255, 255, 0.6)',
               maxWidth: 450,
               textAlign: 'center',
               mb: 3,
@@ -241,8 +237,8 @@ export default function EmailConfirmed() {
           </Box>
 
           {/* Informazioni aggiuntive per il dispositivo rilevato */}
-          <Box sx={{ mt: 3, p: 2, backgroundColor: 'rgba(255, 255, 255, 0.05)', borderRadius: 1 }}>
-            <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+          <Box sx={{ mt: 3, p: 2, backgroundColor: 'action.hover', borderRadius: 1 }}>
+            <Typography variant="caption" color="text.secondary">
               Dispositivo rilevato: {deviceInfo.isMobile ? 'Mobile' : 'Desktop'} 
               {deviceInfo.isIOS && ' (iOS)'}
               {deviceInfo.isAndroid && ' (Android)'}

@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import { ThemeProvider } from './components/ThemeProvider'
 
 try {
   console.log('Starting app initialization...')
@@ -29,7 +30,9 @@ try {
 
   root.render(
     <StrictMode>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </StrictMode>
   )
 
