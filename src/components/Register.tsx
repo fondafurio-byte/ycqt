@@ -72,12 +72,20 @@ export default function Register() {
     setError('');
 
     try {
+      // Genera il token prima della registrazione
+      const companyToken = adminData.token || generateToken();
+
+      // 1. Registra l'utente con metadati che includono il token società
       const { data, error } = await supabase.auth.signUp({
         email: adminData.email,
         password: adminData.password,
         options: {
           data: {
-            role: 'admin'
+            full_name: adminData.fullName,
+            username: adminData.username,
+            role: 'admin',
+            company_token: companyToken,
+            company_name: adminData.societa_nome_completo
           }
         }
       });
@@ -92,7 +100,7 @@ export default function Register() {
           {
             nome_completo: adminData.societa_nome_completo,
             nome_breve: adminData.societa_nome_breve,
-            token: adminData.token || generateToken()
+            token: companyToken
           }
         ])
         .select()
