@@ -1,4 +1,4 @@
-# App Gestione
+# ycqt
 
 Applicazione web di gestione con sistema di autenticazione.
 
@@ -21,4 +21,7 @@ npm run dev
 ```bash
 npm run build
 ```
-# ycqt
+
+## Deploy
+
+Il progetto è configurato per essere deployato su Vercel con supporto per SPA routing.

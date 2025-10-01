@@ -6,10 +6,19 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      external: [],
+      output: {
+        manualChunks: undefined
+      }
+    }
   },
   server: {
     port: 3000,
     strictPort: true
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom']
   }
 })
